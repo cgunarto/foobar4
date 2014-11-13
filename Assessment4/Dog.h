@@ -13,10 +13,9 @@
 
 @interface Dog : NSManagedObject
 
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * color;
 @property (nonatomic, retain) NSString * breed;
+@property (nonatomic, retain) NSString * color;
+@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) DogOwner *owner;
-
 
 @end

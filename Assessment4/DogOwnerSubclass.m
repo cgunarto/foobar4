@@ -1,19 +1,14 @@
 //
-//  DogOwner.m
+//  DogOwnerSubclass.m
 //  Assessment4
 //
 //  Created by CHRISTINA GUNARTO on 11/13/14.
 //  Copyright (c) 2014 MobileMakers. All rights reserved.
 //
 
-#import "DogOwner.h"
-#import "Dog.h"
-#import "AppDelegate.h"
+#import "DogOwnerSubclass.h"
 
-@implementation DogOwner
-
-@dynamic name;
-@dynamic dogs;
+@implementation DogOwnerSubclass
 
 + (void)retrieveDogOwnersWithCompletion:(void(^)(NSMutableArray *dogOwnerObjectsArray, NSError *error))complete
 {
@@ -28,13 +23,12 @@
 
     for (NSString *name in readersFromJSON)
     {
-        DogOwner *dogOwner = [NSEntityDescription insertNewObjectForEntityForName:@"DogOwner" inManagedObjectContext: [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]];
+        DogOwner *dogOwner = [[DogOwner alloc]init];
         dogOwner.name = name;
         [dogOwnersArray addObject:dogOwner];
     }
 
     complete (dogOwnersArray,nil);
 }
-
 
 @end

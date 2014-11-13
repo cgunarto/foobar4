@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4F99A36F1A1558FF00430DFF /* DogOwner.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F99A36E1A1558FF00430DFF /* DogOwner.m */; };
-		4F99A3721A15590000430DFF /* Dog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F99A3711A15590000430DFF /* Dog.m */; };
 		4F99A3751A1559A600430DFF /* owners.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F99A3741A1559A600430DFF /* owners.json */; };
+		4F99A3B01A1577E800430DFF /* DogOwnerSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F99A3AF1A1577E800430DFF /* DogOwnerSubclass.m */; };
+		4F99A3B31A15786500430DFF /* DogOwner.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F99A3B21A15786500430DFF /* DogOwner.m */; };
+		4F99A3B61A15786600430DFF /* Dog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F99A3B51A15786600430DFF /* Dog.m */; };
 		93CD77B11999604D00D27E0A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93CD77B01999604D00D27E0A /* Foundation.framework */; };
 		93CD77B31999604D00D27E0A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93CD77B21999604D00D27E0A /* CoreGraphics.framework */; };
 		93CD77B51999604D00D27E0A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93CD77B41999604D00D27E0A /* UIKit.framework */; };
@@ -40,11 +41,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4F99A36D1A1558FF00430DFF /* DogOwner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DogOwner.h; sourceTree = "<group>"; };
-		4F99A36E1A1558FF00430DFF /* DogOwner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DogOwner.m; sourceTree = "<group>"; };
-		4F99A3701A15590000430DFF /* Dog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dog.h; sourceTree = "<group>"; };
-		4F99A3711A15590000430DFF /* Dog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dog.m; sourceTree = "<group>"; };
 		4F99A3741A1559A600430DFF /* owners.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = owners.json; sourceTree = "<group>"; };
+		4F99A3AE1A1577E800430DFF /* DogOwnerSubclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DogOwnerSubclass.h; sourceTree = "<group>"; };
+		4F99A3AF1A1577E800430DFF /* DogOwnerSubclass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DogOwnerSubclass.m; sourceTree = "<group>"; };
+		4F99A3B11A15786500430DFF /* DogOwner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DogOwner.h; sourceTree = "<group>"; };
+		4F99A3B21A15786500430DFF /* DogOwner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DogOwner.m; sourceTree = "<group>"; };
+		4F99A3B41A15786600430DFF /* Dog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dog.h; sourceTree = "<group>"; };
+		4F99A3B51A15786600430DFF /* Dog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dog.m; sourceTree = "<group>"; };
 		93CD77AD1999604D00D27E0A /* Assessment4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assessment4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93CD77B01999604D00D27E0A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		93CD77B21999604D00D27E0A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -98,10 +101,12 @@
 		4F99A3731A15590500430DFF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4F99A36D1A1558FF00430DFF /* DogOwner.h */,
-				4F99A36E1A1558FF00430DFF /* DogOwner.m */,
-				4F99A3701A15590000430DFF /* Dog.h */,
-				4F99A3711A15590000430DFF /* Dog.m */,
+				4F99A3B41A15786600430DFF /* Dog.h */,
+				4F99A3B51A15786600430DFF /* Dog.m */,
+				4F99A3B11A15786500430DFF /* DogOwner.h */,
+				4F99A3B21A15786500430DFF /* DogOwner.m */,
+				4F99A3AE1A1577E800430DFF /* DogOwnerSubclass.h */,
+				4F99A3AF1A1577E800430DFF /* DogOwnerSubclass.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -284,12 +289,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F99A3B61A15786600430DFF /* Dog.m in Sources */,
 				93CD77C71999604D00D27E0A /* ViewController.m in Sources */,
-				4F99A36F1A1558FF00430DFF /* DogOwner.m in Sources */,
-				4F99A3721A15590000430DFF /* Dog.m in Sources */,
 				93CD77C11999604D00D27E0A /* AppDelegate.m in Sources */,
+				4F99A3B31A15786500430DFF /* DogOwner.m in Sources */,
 				93CD77BD1999604D00D27E0A /* main.m in Sources */,
 				93CD77EA1999642A00D27E0A /* AddDogViewController.m in Sources */,
+				4F99A3B01A1577E800430DFF /* DogOwnerSubclass.m in Sources */,
 				93CD77E7199962E900D27E0A /* DogsViewController.m in Sources */,
 				93CD77ED199964A100D27E0A /* Model.xcdatamodeld in Sources */,
 			);

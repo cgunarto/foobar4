@@ -9,14 +9,12 @@
 #import "Dog.h"
 #import "DogOwner.h"
 
+
 @implementation Dog
 
-@dynamic name;
-@dynamic color;
 @dynamic breed;
+@dynamic color;
+@dynamic name;
 @dynamic owner;
-
-
-
 
 @end
