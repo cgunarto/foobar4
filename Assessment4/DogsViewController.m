@@ -87,11 +87,22 @@
 
 - (IBAction)onDoneButtonPressed:(UIBarButtonItem *)sender
 {
+    NSArray *selectedRows = [self.dogsTableView indexPathsForSelectedRows];
+
+    for (NSIndexPath *indexPath in selectedRows)
+    {
+        Dog *dogToDelete = self.dogsArray[indexPath.row];
+
+        //removeRaidsObject and addRaidsObject are methods that are pre-made by the compiler when custom class was created
+        if ([self.chosenDogOwner.dogs containsObject:dogToDelete])
+        {
+            [self.chosenDogOwner removeDogsObject:dogToDelete];
+            [self.managedObjectContext save:nil];
+            [self loadDogsForOwnerAndReloadData];
+        }
+    }
     [self.dogsTableView setEditing:NO animated:YES];
-
-//    NSArray *seletedRows = [self.dogsTableView]
 }
-
 
 #pragma mark Load Dogs Data
 
