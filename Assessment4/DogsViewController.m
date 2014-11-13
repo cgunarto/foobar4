@@ -49,6 +49,25 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    Dog *chosenDog = self.dogsArray[indexPath.row];
+    [self showAddDogViewControllerForDog:chosenDog];
+}
+
+- (void)showAddDogViewControllerForDog:(Dog *)dog
+{
+    AddDogViewController *addDogVC = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([AddDogViewController class])];
+    addDogVC.dog = dog;
+
+    //Creating a navVC
+    UINavigationController *navVC = [[UINavigationController alloc]initWithRootViewController:addDogVC];
+
+    [self presentViewController:navVC animated:YES completion:^{
+        nil;
+    }];
+}
+
 #pragma mark Load Dogs Data
 
 - (void)loadDogsForOwnerAndReloadData

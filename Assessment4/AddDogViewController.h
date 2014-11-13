@@ -10,9 +10,11 @@
 #import "AppDelegate.h"
 
 @class DogOwner;
+@class Dog;
 
 @interface AddDogViewController : UIViewController
 @property DogOwner *chosenDogOwner;
+@property Dog *dog;
 
 @property NSManagedObjectContext *managedObjectContext;
 

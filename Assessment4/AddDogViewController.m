@@ -55,6 +55,7 @@
         dog.color = self.colorTextField.text;
 
         [self.chosenDogOwner addDogsObject:dog];
+        [self.managedObjectContext save:nil];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }

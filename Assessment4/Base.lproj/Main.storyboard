@@ -76,7 +76,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dogCell" id="KHi-Pg-vhJ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dogCell" id="KHi-Pg-vhJ">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KHi-Pg-vhJ" id="oqt-Jo-e7h">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -115,7 +115,7 @@
         <!--Add Dog View Controller-->
         <scene sceneID="bYx-Mm-O5H">
             <objects>
-                <viewController id="Iyy-aM-B6A" customClass="AddDogViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddDogViewController" id="Iyy-aM-B6A" customClass="AddDogViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Aq4-Ma-ixv"/>
                         <viewControllerLayoutGuide type="bottom" id="1j3-g1-0ji"/>
