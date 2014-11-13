@@ -14,7 +14,7 @@
 @interface DogsViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *dogsTableView;
-@property (weak, nonatomic) NSArray *dogsArray;
+@property (strong, nonatomic) NSArray *dogsArray;
 
 @end
 
@@ -24,6 +24,7 @@
 {
     [super viewDidLoad];
     self.title = @"Dogs";
+    [self loadDogsForOwnerAndReloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -88,8 +89,36 @@
     }
     else
     {
-
+        AddDogViewController *addDogVC = segue.destinationViewController;
+        NSInteger rowNumber = [self.dogsTableView indexPathForSelectedRow].row;
+        Dog *chosenDog = [self.dogsArray objectAtIndex:rowNumber];
+        addDogVC.dog = chosenDog;
     }
 }
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

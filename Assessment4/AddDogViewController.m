@@ -25,7 +25,33 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Add Dog";
+    if (self.dog)
+    {
+        self.title = self.dog.name;
+        self.nameTextField.text = self.dog.name;
+        self.breedTextField.text = self.dog.breed;
+        self.colorTextField.text = self.dog.color;
+    }
+    else
+    {
+        self.title = @"Add Dog";
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (self.dog)
+    {
+        self.title = self.dog.name;
+        self.nameTextField.text = self.dog.name;
+        self.breedTextField.text = self.dog.breed;
+        self.colorTextField.text = self.dog.color;
+    }
+    else
+    {
+        self.title = @"Add Dog";
+    }
 }
 
 - (IBAction)onPressedUpdateDog:(UIButton *)sender
@@ -49,12 +75,22 @@
     }
     else
     {
-        Dog *dog = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Dog class]) inManagedObjectContext:self.managedObjectContext];
-        dog.name = self.nameTextField.text;
-        dog.breed = self.breedTextField.text;
-        dog.color = self.colorTextField.text;
+        if (self.dog)
+        {
+            self.dog.name = self.nameTextField.text;
+            self.dog.breed = self.breedTextField.text;
+            self.dog.color = self.colorTextField.text;
+        }
 
-        [self.chosenDogOwner addDogsObject:dog];
+        else
+        {
+            Dog *dog = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Dog class]) inManagedObjectContext:self.managedObjectContext];
+            dog.name = self.nameTextField.text;
+            dog.breed = self.breedTextField.text;
+            dog.color = self.colorTextField.text;
+            [self.chosenDogOwner addDogsObject:dog];
+        }
+
         [self.managedObjectContext save:nil];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
