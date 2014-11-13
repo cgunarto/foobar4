@@ -8,6 +8,7 @@
 
 #import "AddDogViewController.h"
 #import "DogOwner.h"
+#import "Dog.h"
 
 @interface AddDogViewController ()
 
@@ -29,8 +30,33 @@
 
 - (IBAction)onPressedUpdateDog:(UIButton *)sender
 {
+    if ([self.nameTextField.text isEqualToString:@""] ||
+        [self.breedTextField.text isEqualToString:@""] ||
+        [self.colorTextField.text isEqualToString:@""])
+    {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"INVALID ENTRY"
+                                                                       message:@"Please make sure there are no blank spaces"
+                                                                preferredStyle:UIAlertControllerStyleAlert];
 
-    [self dismissViewControllerAnimated:YES completion:nil];
+        UIAlertAction *okButton = [UIAlertAction actionWithTitle:@"OK"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:nil];
+        [alert addAction:okButton];
+        [self presentViewController:alert
+                           animated:YES
+                         completion:nil];
+
+    }
+    else
+    {
+        Dog *dog = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Dog class]) inManagedObjectContext:self.managedObjectContext];
+        dog.name = self.nameTextField.text;
+        dog.breed = self.breedTextField.text;
+        dog.color = self.colorTextField.text;
+
+        [self.chosenDogOwner addDogsObject:dog];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 @end
