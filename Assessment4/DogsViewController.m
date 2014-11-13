@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *dogsTableView;
 @property (strong, nonatomic) NSArray *dogsArray;
 
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *editButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @end
 
 @implementation DogsViewController
@@ -25,6 +27,7 @@
     [super viewDidLoad];
     self.title = @"Dogs";
     [self loadDogsForOwnerAndReloadData];
+    [self.navigationController setToolbarHidden:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -56,6 +59,11 @@
     [self showAddDogViewControllerForDog:chosenDog];
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    return YES;
+}
+
 - (void)showAddDogViewControllerForDog:(Dog *)dog
 {
     AddDogViewController *addDogVC = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([AddDogViewController class])];
@@ -68,6 +76,22 @@
         nil;
     }];
 }
+
+#pragma mark Edit Button
+
+- (IBAction)onEditButtonPressed:(UIBarButtonItem *)sender
+{
+    self.dogsTableView.allowsMultipleSelectionDuringEditing = YES;
+    [self.dogsTableView setEditing:YES animated:YES];
+}
+
+- (IBAction)onDoneButtonPressed:(UIBarButtonItem *)sender
+{
+    [self.dogsTableView setEditing:NO animated:YES];
+
+//    NSArray *seletedRows = [self.dogsTableView]
+}
+
 
 #pragma mark Load Dogs Data
 
