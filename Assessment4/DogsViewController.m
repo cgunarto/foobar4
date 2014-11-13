@@ -7,10 +7,14 @@
 //
 
 #import "DogsViewController.h"
+#import "Dog.h"
+#import "DogOwner.h"
+#import "AddDogViewController.h"
 
 @interface DogsViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *dogsTableView;
+@property (weak, nonatomic) NSArray *dogsArray;
 
 @end
 
@@ -22,26 +26,46 @@
     self.title = @"Dogs";
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self loadDogsForOwnerAndReloadData];
+}
+
+
 #pragma mark - UITableView Delegate Methods
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //TODO: UPDATE THIS ACCORDINGLY
-    return 1;
+    return self.dogsArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"dogCell"];
-    //TODO: UPDATE THIS ACCORDINGLY
+
+    Dog *dog = self.dogsArray[indexPath.row];
+    cell.textLabel.text = dog.name;
     return cell;
 }
+
+#pragma mark Load Dogs Data
+
+- (void)loadDogsForOwnerAndReloadData
+{
+    self.dogsArray = [self.chosenDogOwner.dogs allObjects];
+    [self.dogsTableView reloadData];
+}
+
+#pragma mark Segue
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString: @"AddDogSegue"])
     {
-
+        AddDogViewController *addDogVC =  segue.destinationViewController;
+        addDogVC.managedObjectContext = self.managedObjectContext;
+        addDogVC.chosenDogOwner = self.chosenDogOwner;
     }
     else
     {

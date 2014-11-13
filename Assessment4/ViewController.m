@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "AppDelegate.h"
 #import "DogOwner.h"
+#import "DogsViewController.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 
@@ -38,6 +39,17 @@
 {
     [super viewWillAppear:animated];
     [self loadDogOwnersAndReloadData];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    DogsViewController *dogVC = segue.destinationViewController;
+    dogVC.managedObjectContext = self.managedObjectContext;
+
+    NSIndexPath *indexPath = [self.myTableView indexPathForSelectedRow];
+    DogOwner *chosenDogOwner = self.dogOwnersArray[indexPath.row];
+
+    dogVC.chosenDogOwner = chosenDogOwner;
 }
 
 #pragma mark - UITableView Delegate Methods
