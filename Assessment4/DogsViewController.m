@@ -50,6 +50,7 @@
 
     Dog *dog = self.dogsArray[indexPath.row];
     cell.textLabel.text = dog.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@", dog.breed, dog.color];
     return cell;
 }
 
