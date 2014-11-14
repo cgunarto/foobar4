@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "DogOwner.h"
 #import "DogsViewController.h"
+#define kKeyForBarTintColor @"navBarTintColor"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 
@@ -39,6 +40,17 @@
 {
     [super viewWillAppear:animated];
     [self loadDogOwnersAndReloadData];
+    [self setBarTintColorFromDefault];
+}
+
+- (void)setBarTintColorFromDefault
+{
+    NSData *colorData = [[NSUserDefaults standardUserDefaults] objectForKey:kKeyForBarTintColor];
+    UIColor *color = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
+    if (color)
+    {
+        self.navigationController.navigationBar.tintColor = color;
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -74,23 +86,31 @@
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     //TODO: SAVE USER'S DEFAULT COLOR PREFERENCE USING THE CONDITIONAL BELOW
+    UIColor *color;
 
     if (buttonIndex == 0)
     {
         self.navigationController.navigationBar.tintColor = [UIColor purpleColor];
+        color = [UIColor purpleColor];
     }
     else if (buttonIndex == 1)
     {
         self.navigationController.navigationBar.tintColor = [UIColor blueColor];
+        color = [UIColor blueColor];
     }
     else if (buttonIndex == 2)
     {
         self.navigationController.navigationBar.tintColor = [UIColor orangeColor];
+        color = [UIColor orangeColor];
     }
     else if (buttonIndex == 3)
     {
         self.navigationController.navigationBar.tintColor = [UIColor greenColor];
+        color = [UIColor greenColor];
     }
+
+    NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:color];
+    [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:kKeyForBarTintColor];
 
 }
 
